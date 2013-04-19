@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+    <HEAD>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+        <meta name="generator" content="Gutenberg">
+        <TITLE>otx Help: Filename</TITLE>
+    </HEAD>
+<BODY bgcolor="#ffffff">
+
+<!-- start of header -->
+<!--#include virtual="/adcnavbar1" -->
+<!-- end of header -->
+
+<a name="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5" title="Filename"></a>
+<a name="DontLinkElementID_5" title="Filename"></a>
+<br><h2><font face="Lucida Grande,Helvetica,Arial" color="#330099">Filename</font></h2>
+<p><font face="Geneva,Helvetica,Arial" size="2">otx
+can use the name of the executable when creating the output file, or
+you may specify a name to use for all output files. You may also
+specify a filename extension, or let otx use the default "txt". These
+text fields are only starting points; they can always be overridden by
+the "Output:" text field in the main window. </font></p>
+<!-- start of footer -->
+<!--#include virtual="/footer" -->
+<!-- end of footer -->
+
+</BODY>
+</HTML>

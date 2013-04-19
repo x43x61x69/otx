@@ -1,0 +1,23 @@
+/*
+    otx_Prefix.pch
+
+    This file is in the public domain.
+*/
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    extern BOOL gCancel;
+#endif
+
+#ifndef NSAppKitVersionNumber10_4
+    #define NSAppKitVersionNumber10_4 824
+#endif
+
+#ifndef NSAppKitVersionNumber10_6
+    #define NSAppKitVersionNumber10_6 1038
+#endif
+
+#define OS_IS_PRE_TIGER     NSAppKitVersionNumber < NSAppKitVersionNumber10_4
+#define OS_IS_POST_TIGER    floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_4
+#define OS_IS_TIGER         (!OS_IS_PRE_TIGER) && (!OS_IS_POST_TIGER)
+#define OS_IS_PRE_SNOW      NSAppKitVersionNumber < NSAppKitVersionNumber10_6

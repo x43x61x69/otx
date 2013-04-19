@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+    <HEAD>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+        <meta name="generator" content="Gutenberg">
+        <TITLE>otx Help: Open file with application</TITLE>
+    </HEAD>
+<BODY bgcolor="#ffffff">
+
+<!-- start of header -->
+<!--#include virtual="/adcnavbar1" -->
+<!-- end of header -->
+
+<a name="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5" title="Open file with application"></a>
+<a name="DontLinkElementID_5" title="Open file with application"></a>
+<br><h2><font face="Lucida Grande,Helvetica,Arial" color="#330099">Open file with application</font></h2>
+<p><font face="Geneva,Helvetica,Arial" size="2">If
+you would like otx to open the output file immediately after it is created, enter the name of your preferred viewer in this text field. Capitalization is ignored. </font></p>
+<!-- start of footer -->
+<!--#include virtual="/footer" -->
+<!-- end of footer -->
+
+</BODY>
+</HTML>

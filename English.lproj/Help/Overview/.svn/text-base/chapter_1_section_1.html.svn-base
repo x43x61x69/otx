@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+    <HEAD>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+        <meta name="generator" content="Gutenberg">
+        
+        <TITLE>otx Help</TITLE>
+    </HEAD>
+<BODY bgcolor="#ffffff">
+
+<!-- start of header -->
+<!--#include virtual="/adcnavbar1" -->
+<!-- end of header -->
+
+<h1><font face="Lucida Grande,Helvetica,Arial" color="#330099">otx
+Help</font></h1>
+<p><font face="Geneva,Helvetica,Arial" size="2">otx
+stands for "object tool extended". otx uses otool(object tool) to
+disassemble a Mach-O executable file, then enhances the disassembled
+output. Simple enhancements include adding the machine code of each
+instruction as well as the offset of each instruction from the
+beginning of a function. More complicated enhancements include
+displaying the names of ObjC methods even if symbols have been
+stripped, and adding comments that describe member variables, function
+calls, static data and more. </font></p>
+
+	<p align="center"><img src="../images/MainWindow.jpg"></p>
+
+<p><font face="Geneva,Helvetica,Arial" size="2">otx can open almost
+any Mach-O executable file you're likely to use- PPC or x86, single
+architecture or universal binary. When you open a universal binary, the
+popup menu show above allows you to select which architecture to
+disassemble. If you have lipo installed, you can easily separate the
+selected architecture using the "Thin" button.</font></p>
+
+<p><font face="Geneva,Helvetica,Arial" size="2">If you have obfuscated
+your code, you may find that otool's disassembly is less than desirable.
+To assist you, otx includes a very basic deobfuscator. By using the
+"Verify" button shown above, you can verify that otool will be able to
+correctly disassemble your executable. If this verification fails, otx
+will ask if you would like to save a deobfuscated copy of your executable.
+Should you choose to do so, the deobfuscated copy will be automatically
+opened for further processing. Currently, deobfuscation is only necessary
+for x86 executables.</p>
+
+    <h3><font face="Lucida Grande,Helvetica,Arial">Refer to these sections:</font></h3>
+    
+    <blockquote>
+        
+            <a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_1-DontLinkElementID_1" href="chapter_1_section_2.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_1-DontLinkElementID_1">Specifying files to analyze.</a>
+            
+        <br>
+
+    </blockquote>
+
+<!-- start of footer -->
+<!--#include virtual="/footer" -->
+<!-- end of footer -->
+
+</BODY>
+</HTML>

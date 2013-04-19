@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<style type="text/css">
+<!--
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:active {text-decoration: none}
+a:hover {text-decoration: underline}
+-->
+</style>
+
+	<head>
+		<TITLE>otx Help: TOC</TITLE>
+		<META NAME="generator" CONTENT="Gutenberg">
+		<META http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<meta name="ROBOTS" content="NOINDEX">
+		<base target="content">
+	</head>
+
+	<body bgcolor="#FFFFFF" link="#000099" vlink="#660066" leftmargin="0" topmargin="0" marginwidth="1" marginheight="0">
+             <font face="Verdana,Geneva,Arial,Helvetica,sans-serif">
+
+<table width="100%"><tr><td>
+
+<img src = "../art/otxArt.png">
+</td></tr></table><br>
+
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+
+            <tr>
+                <td valign="top" align="right"><a href="../Overview/index.html" target="_top"><img border="0" src="../images/sm_triangle.gif"></img></a></td>
+                <td valign="top" colspan="5"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="2"><a href="../Overview/index.html" target="_top">otx Help</a></font></td>
+            </tr>
+
+                <tr><td valign="top" align="right" width="5%"><a href="toc_closed.html" target="_self"><img src="../images/sm_opentriangle.gif" border="0"/></a></td><td  valign="top" colspan="5" ><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="2"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2" href="chapter_2_section_1.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2">Preferences</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCCFECD" href="chapter_2_section_2.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCCFECD">Show local offsets</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_2" href="chapter_2_section_3.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_2">Show data sections</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCHBAIH" href="chapter_2_section_4.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCHBAIH">Entab output</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCEFHCI" href="chapter_2_section_5.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCEFHCI">Show md5 checksum</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_3" href="chapter_2_section_6.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_3">Demangle names</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCIIJJJ" href="chapter_2_section_7.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCIIJJJ">Show method types</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_4" href="chapter_2_section_8.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_4">Show variable types</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5" href="chapter_2_section_10.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5">Filename</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5" href="chapter_2_section_11.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5">Location</a></font></td></tr>
+
+                    <tr><td>&nbsp;</td><td valign="top" align="right" ><img src="../images/bullet.gif"/></td><td align="top" colspan = "4"><font face="Verdana,Geneva,Helvetica,Arial,sans-serif" size="1"><a logicalPath="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5" href="chapter_2_section_12.html#//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_5">Open file with application</a></font></td></tr>
+
+<tr><td width="5%"></td><td width="5%"></td><td width="5%"></td><td width="5%"></td><td width="5%"></td><td width="75%"></td></tr>
+</table>
+
+</font>
+	</body>
+
+</html>

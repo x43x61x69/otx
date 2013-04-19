@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+    <HEAD>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+        <meta name="generator" content="Gutenberg">
+        <TITLE>otx Help: Show method types</TITLE>
+    </HEAD>
+<BODY bgcolor="#ffffff">
+
+<!-- start of header -->
+<!--#include virtual="/adcnavbar1" -->
+<!-- end of header -->
+
+<a name="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-BBCIIJJJ" title="Show method types"></a>
+<a name="BBCIIJJJ" title="Show method types"></a>
+<br><h2><font face="Lucida Grande,Helvetica,Arial" color="#330099">Show method types</font></h2>
+<p><font face="Geneva,Helvetica,Arial" size="2">Displays the data type of the return value of ObjC methods.</font></p>
+				</p><blockquote>
+					<font face="monaco" size="1">-(unsigned int)[CDropBox draggingEntered:]</font>
+					<br>or<br>
+					<font face="monaco" size="1">-[CDropBox draggingEntered:]</font>
+				</blockquote>
+
+<!-- start of footer -->
+<!--#include virtual="/footer" -->
+<!-- end of footer -->
+
+</BODY>
+</HTML>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+    <HEAD>
+        <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+        <meta name="generator" content="Gutenberg">
+        <TITLE>otx Help: Demangle names</TITLE>
+    </HEAD>
+<BODY bgcolor="#ffffff">
+
+<!-- start of header -->
+<!--#include virtual="/adcnavbar1" -->
+<!-- end of header -->
+
+<a name="//apple_ref/doc/uid/DontLinkBookID_1-DontLinkChapterID_2-DontLinkElementID_3" title="Demangle names"></a>
+<a name="DontLinkElementID_3" title="Demangle names"></a>
+<br><h2><font face="Lucida Grande,Helvetica,Arial" color="#330099">Demangle names</font></h2>
+<p><font face="Geneva,Helvetica,Arial" size="2">Attempts to revert mangled C++ symbols to their original form.</font></p>
+				</p><blockquote>
+					<font face="monaco" size="1">_Znwm</font>
+					<br>or<br>
+					<font face="monaco" size="1">operator new(unsigned long)</font>
+				</blockquote>
+
+<!-- start of footer -->
+<!--#include virtual="/footer" -->
+<!-- end of footer -->
+
+</BODY>
+</HTML>
