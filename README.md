@@ -1,14 +1,14 @@
 otx
 ===
 
-Mach-O disassembler
+Mach-O disassembler.
 
 http://otx.osxninja.com/
 
 
 
-Note
-----
+Description
+-----------
 
 Apple made changes to the otool after Xcode 4.2, breaking the otx output format.
 
@@ -28,4 +28,4 @@ In terminal, use the following command:
 sudo ln -s /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode.app/Contents/Developer/usr/bin/otool
 ```
 
-This will fix the error in *10.9* with Xcode *5.0.1*.
+This will fix the error in 10.9 with Xcode 5.0.1.
