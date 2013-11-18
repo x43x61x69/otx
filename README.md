@@ -8,7 +8,7 @@ http://otx.osxninja.com/
 
 
 Note
-====
+----
 
 Apple made changes to the otool after Xcode 4.2, breaking the otx output format.
 
@@ -22,12 +22,10 @@ A pre-compiled binary was also inclouded.
 OS X Mavericks & Xcode 5
 ------------------------
 
-If you don't want to modify the source, you can copy "otool" from:
+In terminal, use the following command:
 
-  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+```sh
+sudo ln -s /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode.app/Contents/Developer/usr/bin/otool
+```
 
-to
-
-  /Applications/Xcode.app/Contents/Developer/usr/bin
-
-This will fix the error in 10.9 with Xcode 5.0.1.
+This will fix the error in *10.9* with Xcode *5.0.1*.
