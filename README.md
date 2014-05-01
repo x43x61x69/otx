@@ -1,31 +1,54 @@
 otx
 ===
 
-Mach-O disassembler.
+The Mach-O disassembler.
 
-http://otx.osxninja.com/
+~~[Original Site](http://otx.osxninja.com/)~~ *(Down)*
 
+![screenshot](https://dl.dropboxusercontent.com/s/tjixljauua7dx7i/otx.png)
 
 
 Description
 -----------
 
-Apple made changes to the otool after Xcode 4.2, breaking the otx output format.
+This is an updated version of the original otx, which has the 
+following new features:
 
-This repo was mean to fix it, also removed PowerPC arch so it will compile in Xocde 4.
+* Works with new otool came with Xcode 4.2 and above.
+* Compatible with Xcode 5.1.
+* Based on 10.9 SDK.
+* Now use 64bit only binaries.
+* Outdated APIs updated.
+* Minor bugs fix.
+* Pre-compiled binaries included.
 
-Build number was fixed as well. (288 -> 561)
+If the GUI version crashed on certain targets, consider using the 
+CLI version. Usually it works without problems.
 
-A pre-compiled binary was also inclouded.
+
+Changelog
+---------
+
+Build 562:
+* Update base SDK to 10.9 and Xcode 5.1.
+
+Build 561:
+* Initial release.
 
 
-OS X Mavericks & Xcode 5
-------------------------
+Issues with OS X Mavericks & Xcode 5
+------------------------------------
 
-In terminal, use the following command:
+If otx crashed when calling otool on your OS X Mavericks with Xcode 5 setup, use the following command:
 
 ```sh
 sudo ln -s /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode.app/Contents/Developer/usr/bin/otool
 ```
 
-This will fix the error in 10.9 with Xcode 5.0.1.
+You will have to run this every time Xcode updates.
+
+
+License
+-------
+
+The otx project and all original otx source files are in the public domain.

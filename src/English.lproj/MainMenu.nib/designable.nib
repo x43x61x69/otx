@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="212" id="240"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application">
+            <connections>
+                <outlet property="delegate" destination="212" id="201218"/>
+            </connections>
+        </customObject>
+        <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
+            <items>
+                <menuItem title="otx" id="56">
+                    <menu key="submenu" title="otx" systemMenu="apple" id="57">
+                        <items>
+                            <menuItem title="About otx…" id="58">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="894"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="196">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Preferences…" keyEquivalent="," id="129">
+                                <connections>
+                                    <action selector="showPrefs:" target="212" id="786"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="143">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Services" id="131">
+                                <menu key="submenu" title="Services" systemMenu="services" id="130"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="144">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Hide otx" keyEquivalent="h" id="134">
+                                <connections>
+                                    <action selector="hide:" target="-2" id="152"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="145">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-2" id="146"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="150">
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-2" id="153"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="149">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Quit otx" keyEquivalent="q" id="136">
+                                <connections>
+                                    <action selector="terminate:" target="-2" id="139"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="File" id="83">
+                    <menu key="submenu" title="File" id="81">
+                        <items>
+                            <menuItem title="Open..." keyEquivalent="o" id="72">
+                                <connections>
+                                    <action selector="openExe:" target="212" id="879"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="79">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Close" keyEquivalent="w" id="73">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="193"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save" keyEquivalent="s" id="75">
+                                <connections>
+                                    <action selector="attemptToProcessFile:" target="212" id="201219"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Edit" id="163">
+                    <menu key="submenu" title="Edit" id="169">
+                        <items>
+                            <menuItem title="Undo" keyEquivalent="z" id="158">
+                                <connections>
+                                    <action selector="undo:" target="-1" id="180"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Redo" keyEquivalent="Z" id="173">
+                                <connections>
+                                    <action selector="redo:" target="-1" id="178"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="156">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Cut" keyEquivalent="x" id="160">
+                                <connections>
+                                    <action selector="cut:" target="-1" id="175"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Copy" keyEquivalent="c" id="157">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="181"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste" keyEquivalent="v" id="171">
+                                <connections>
+                                    <action selector="paste:" target="-1" id="176"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="204">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="pasteAsPlainText:" target="-1" id="205"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Delete" id="164">
+                                <connections>
+                                    <action selector="delete:" target="-1" id="195"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="172">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="179"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="19">
+                    <menu key="submenu" title="Window" systemMenu="window" id="24">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="23">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="37"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="197">
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="198"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="92">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="otx" id="589">
+                                <connections>
+                                    <action selector="showMainWindow:" target="212" id="591"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="590">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Bring All to Front" id="5">
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="39"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="103">
+                    <menu key="submenu" title="Help" id="106">
+                        <items>
+                            <menuItem title="otx Help" keyEquivalent="?" id="111">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="122"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
+        <customObject id="212" userLabel="AppController" customClass="AppController">
+            <connections>
+                <outlet property="iArchPopup" destination="1131" id="201199"/>
+                <outlet property="iDropBox" destination="1123" id="201211"/>
+                <outlet property="iMainView" destination="1155" id="201212"/>
+                <outlet property="iMainWindow" destination="1121" id="201198"/>
+                <outlet property="iOutputLabelText" destination="1139" id="201203"/>
+                <outlet property="iOutputText" destination="1140" id="201202"/>
+                <outlet property="iPathLabelText" destination="1126" id="201205"/>
+                <outlet property="iPathText" destination="1130" id="201204"/>
+                <outlet property="iPrefsGeneralView" destination="688" id="201215"/>
+                <outlet property="iPrefsOutputView" destination="677" id="201216"/>
+                <outlet property="iPrefsWindow" destination="456" id="201214"/>
+                <outlet property="iProgBar" destination="1158" id="201209"/>
+                <outlet property="iProgText" destination="1157" id="201206"/>
+                <outlet property="iProgView" destination="1156" id="201213"/>
+                <outlet property="iSaveButton" destination="1141" id="201210"/>
+                <outlet property="iThinButton" destination="1127" id="201200"/>
+                <outlet property="iTypeLabelText" destination="1129" id="201208"/>
+                <outlet property="iTypeText" destination="1128" id="201207"/>
+                <outlet property="iVerifyButton" destination="1125" id="201201"/>
+            </connections>
+        </customObject>
+        <userDefaultsController id="291" userLabel="User Defaults Controller">
+            <declaredKeys>
+                <string>OutputFileName</string>
+                <string>OutputFileExtension</string>
+                <string>ShowLocalOffsets</string>
+                <string>ShowDataSection</string>
+                <string>EntabOutput</string>
+                <string>ShowMethodReturnTypes</string>
+                <string>ShowIvarTypes</string>
+                <string>OpenOutputFile</string>
+                <string>OutputApp</string>
+                <string>ShowMD5</string>
+                <string>UseExeDir</string>
+                <string>DemangleCppNames</string>
+                <string>UseCustomName</string>
+                <string>AskOutputDir</string>
+                <string>SeparateLogicalBlocks</string>
+                <string>VerboseMsgSends</string>
+                <string>ShowReturnStatements</string>
+            </declaredKeys>
+        </userDefaultsController>
+        <window title="otx Preferences" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="456" userLabel="Prefs Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="363" y="372" width="346" height="246"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="746"/>
+            <value key="minSize" type="size" width="200" height="100"/>
+            <value key="maxSize" type="size" width="500" height="500"/>
+            <view key="contentView" id="457">
+                <rect key="frame" x="0.0" y="0.0" width="346" height="246"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+        </window>
+        <customView hidden="YES" id="677" userLabel="Prefs: Output">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="282"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <box title="Location" id="817">
+                    <rect key="frame" x="17" y="54" width="350" height="84"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="2" y="2" width="346" height="67"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <matrix verticalHuggingPriority="750" selectionByRect="NO" allowsEmptySelection="NO" autosizesCells="NO" id="824">
+                                <rect key="frame" x="14" y="12" width="150" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="201" height="20"/>
+                                <size key="intercellSpacing" width="0.0" height="4"/>
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="200824">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="radio" title="Same as executable" imagePosition="left" alignment="left" controlSize="small" toolTip="Place the output file in the same folder as the executable." inset="2" id="826">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="Ask" imagePosition="left" alignment="left" controlSize="small" state="on" toolTip="Ask where to save the output file." tag="1" inset="2" id="825">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                                <connections>
+                                    <binding destination="291" name="selectedTag" keyPath="values.AskOutputDir" id="995">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </matrix>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <textField verticalHuggingPriority="750" id="685">
+                    <rect key="frame" x="200" y="20" width="148" height="19"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="200685">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="291" name="enabled" keyPath="values.OpenOutputFile" id="913">
+                            <dictionary key="options">
+                                <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                            </dictionary>
+                        </binding>
+                        <binding destination="291" name="value" keyPath="values.OutputApp" id="908">
+                            <dictionary key="options">
+                                <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                <integer key="NSConditionallySetsEditable" value="0"/>
+                                <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <button id="684">
+                    <rect key="frame" x="33" y="20" width="167" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Open file with application:" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="200684">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="291" name="value" keyPath="values.OpenOutputFile" id="914">
+                            <dictionary key="options">
+                                <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                <integer key="NSConditionallySetsEnabled" value="0"/>
+                                <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <box title="Filename" id="793">
+                    <rect key="frame" x="17" y="148" width="350" height="118"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="2" y="2" width="346" height="101"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <matrix verticalHuggingPriority="750" selectionByRect="NO" allowsEmptySelection="NO" autosizesCells="NO" id="795">
+                                <rect key="frame" x="14" y="46" width="165" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="165" height="20"/>
+                                <size key="intercellSpacing" width="0.0" height="4"/>
+                                <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="200795">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="radio" title="Use executable's name" imagePosition="left" alignment="left" controlSize="small" state="on" toolTip="Name the output file after the executable." inset="2" id="796">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <action selector="syncOutputText:" target="212" id="865"/>
+                                            </connections>
+                                        </buttonCell>
+                                        <buttonCell type="radio" title="Use custom name:" imagePosition="left" alignment="left" controlSize="small" toolTip="Use the following text as the output file's name." tag="1" inset="2" id="797">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <action selector="syncOutputText:" target="212" id="866"/>
+                                            </connections>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                                <connections>
+                                    <binding destination="291" name="selectedTag" keyPath="values.UseCustomName" id="985">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </matrix>
+                            <textField verticalHuggingPriority="750" tag="200" id="798">
+                                <rect key="frame" x="139" y="47" width="191" height="19"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" tag="200" drawsBackground="YES" id="200798">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="syncOutputText:" target="212" id="855"/>
+                                    <binding destination="291" name="value" keyPath="values.OutputFileName" id="906">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEditable" value="0"/>
+                                            <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                            <string key="NSNullPlaceholder">output</string>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="291" name="enabled" keyPath="values.UseCustomName" id="963">
+                                        <dictionary key="options">
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                        </dictionary>
+                                    </binding>
+                                    <outlet property="delegate" destination="212" id="860"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" tag="201" id="799">
+                                <rect key="frame" x="139" y="19" width="191" height="19"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" tag="201" drawsBackground="YES" id="200799">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="syncOutputText:" target="212" id="856"/>
+                                    <binding destination="291" name="value" keyPath="values.OutputFileExtension" id="920">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEditable" value="0"/>
+                                            <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                            <string key="NSNullPlaceholder">txt</string>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                        </dictionary>
+                                    </binding>
+                                    <outlet property="delegate" destination="212" id="861"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="800">
+                                <rect key="frame" x="15" y="21" width="118" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" id="200800">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Extension:
+</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+            </subviews>
+        </customView>
+        <customView id="688" userLabel="Prefs: General">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="264"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <box title="C++" id="885">
+                    <rect key="frame" x="17" y="16" width="350" height="58"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="2" y="2" width="346" height="41"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <matrix verticalHuggingPriority="750" mode="highlight" allowsEmptySelection="NO" autosizesCells="NO" id="1005">
+                                <rect key="frame" x="16" y="13" width="324" height="18"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="170" height="18"/>
+                                <size key="intercellSpacing" width="4" height="4"/>
+                                <buttonCell key="prototype" type="check" title="Demangle names" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" tag="-1" inset="2" id="201005">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="check" title="Demangle names" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="887">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <binding destination="291" name="value" keyPath="values.DemangleCppNames" id="1007">
+                                                    <dictionary key="options">
+                                                        <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                        <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                        <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </buttonCell>
+                                    </column>
+                                    <column>
+                                        <buttonCell type="check" title="Demangle names" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" enabled="NO" tag="1" transparent="YES" inset="2" id="1006">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                            </matrix>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <box title="Objective-C" id="694">
+                    <rect key="frame" x="17" y="84" width="350" height="84"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <view key="contentView">
+                        <rect key="frame" x="2" y="2" width="346" height="67"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <matrix verticalHuggingPriority="750" mode="highlight" selectionByRect="NO" allowsEmptySelection="NO" autosizesCells="NO" id="696">
+                                <rect key="frame" x="16" y="13" width="324" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="170" height="20"/>
+                                <size key="intercellSpacing" width="4" height="4"/>
+                                <buttonCell key="prototype" type="check" title="Switch" bezelStyle="regularSquare" imagePosition="left" alignment="left" tag="-1" inset="2" id="200696">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <cells>
+                                    <column>
+                                        <buttonCell type="check" title="Show method types" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1175">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <binding destination="291" name="value" keyPath="values.ShowMethodReturnTypes" id="1179">
+                                                    <dictionary key="options">
+                                                        <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                        <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                        <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </buttonCell>
+                                        <buttonCell type="check" title="Show verbose msgSends" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1177">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <binding destination="291" name="value" keyPath="values.VerboseMsgSends" id="1186">
+                                                    <dictionary key="options">
+                                                        <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                        <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                        <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                                        <integer key="NSValidatesImmediately" value="1"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </buttonCell>
+                                    </column>
+                                    <column>
+                                        <buttonCell type="check" title="Show variable types" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1176">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <connections>
+                                                <binding destination="291" name="value" keyPath="values.ShowIvarTypes" id="1180">
+                                                    <dictionary key="options">
+                                                        <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                                        <integer key="NSConditionallySetsEnabled" value="0"/>
+                                                        <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </buttonCell>
+                                        <buttonCell type="check" title="Switch" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" enabled="NO" tag="2" transparent="YES" inset="2" id="1178">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </column>
+                                </cells>
+                            </matrix>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </box>
+                <matrix verticalHuggingPriority="750" mode="highlight" selectionByRect="NO" allowsEmptySelection="NO" autosizesCells="NO" id="689">
+                    <rect key="frame" x="35" y="180" width="324" height="68"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    <size key="cellSize" width="170" height="20"/>
+                    <size key="intercellSpacing" width="4" height="4"/>
+                    <buttonCell key="prototype" type="check" title="Class methods" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" tag="-1" inset="2" id="200689">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <cells>
+                        <column>
+                            <buttonCell type="check" title="Show local offsets" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1014">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.ShowLocalOffsets" id="1020">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                            <buttonCell type="check" title="Show return statements" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1016">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.ShowReturnStatements" id="101166">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                            <buttonCell type="check" title="Separate logical blocks" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1018">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.SeparateLogicalBlocks" id="101165">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                        </column>
+                        <column>
+                            <buttonCell type="check" title="Show data sections" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1015">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.ShowDataSection" id="101164">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                            <buttonCell type="check" title="Show md5 checksum" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="1017">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.ShowMD5" id="1023">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                            <buttonCell type="check" title="Entab text" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="1019">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                                <connections>
+                                    <binding destination="291" name="value" keyPath="values.EntabOutput" id="101161">
+                                        <dictionary key="options">
+                                            <integer key="NSAllowsEditingMultipleValuesSelection" value="0"/>
+                                            <integer key="NSConditionallySetsEnabled" value="0"/>
+                                            <integer key="NSRaisesForNotApplicableKeys" value="0"/>
+                                            <integer key="NSValidatesImmediately" value="1"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </buttonCell>
+                        </column>
+                    </cells>
+                </matrix>
+            </subviews>
+        </customView>
+        <customView id="1113" userLabel="Prog View">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="1116">
+                    <rect key="frame" x="0.0" y="59" width="420" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" id="1115">
+                    <rect key="frame" x="19" y="16" width="384" height="12"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                </progressIndicator>
+                <textField verticalHuggingPriority="750" id="1114">
+                    <rect key="frame" x="18" y="34" width="386" height="14"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="201114">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+        </customView>
+        <window title="otx" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1121" userLabel="Main Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
+            <rect key="contentRect" x="155" y="444" width="430" height="180"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="746"/>
+            <value key="minSize" type="size" width="420" height="166"/>
+            <value key="maxSize" type="size" width="800" height="600"/>
+            <view key="contentView" id="1122">
+                <rect key="frame" x="0.0" y="0.0" width="430" height="180"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView id="1155">
+                        <rect key="frame" x="0.0" y="41" width="430" height="139"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" id="1141">
+                                <rect key="frame" x="332" y="7" width="72" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" inset="2" id="201141">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="attemptToProcessFile:" target="212" id="1174"/>
+                                </connections>
+                            </button>
+                            <textField toolTip="Specify the name of the output file." verticalHuggingPriority="750" tag="100" id="1140">
+                                <rect key="frame" x="72" y="13" width="257" height="19"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" tag="100" drawsBackground="YES" id="201140">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <outlet property="delegate" destination="212" id="1147"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="1139">
+                                <rect key="frame" x="8" y="11" width="59" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201139">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Output:
+</string>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box borderWidth="0.0" boxType="oldStyle" borderType="line" titlePosition="noTitle" id="1123" customClass="DropBox">
+                                <rect key="frame" x="16" y="43" width="398" height="78"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="396" height="76"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" id="1126">
+                                            <rect key="frame" x="8" y="47" width="42" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201126">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <string key="title">File:
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="1129">
+                                            <rect key="frame" x="8" y="10" width="42" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201129">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <string key="title">Type:
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="1130">
+                                            <rect key="frame" x="52" y="36" width="332" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" id="201130">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="1128">
+                                            <rect key="frame" x="52" y="14" width="114" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" id="201128">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton toolTip="Select an architecure in a universal binary." verticalHuggingPriority="750" id="1131">
+                                            <rect key="frame" x="294" y="11" width="87" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" enabled="NO" state="on" borderStyle="border" tag="16777223" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="101174" id="201131">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <menu key="menu" title="OtherViews" id="1132">
+                                                    <items>
+                                                        <menuItem title="ppc" tag="18" id="1134">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem title="ppc64" tag="16777234" id="101173">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                        <menuItem title="i386" tag="7" id="1133">
+                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                        </menuItem>
+                                                        <menuItem state="on" tag="16777223" id="101174">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="selectArch:" target="212" id="1145"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <button toolTip="Separate the currently selected architecture using lipo." verticalHuggingPriority="750" id="1127">
+                                            <rect key="frame" x="218" y="11" width="68" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Thin" bezelStyle="texturedRounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" inset="2" id="201127">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="thinFile:" target="212" id="1144"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Check for obfuscated nop's in x86 code." verticalHuggingPriority="750" id="1125">
+                                            <rect key="frame" x="142" y="11" width="68" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                            <buttonCell key="cell" type="roundTextured" title="Verify" bezelStyle="texturedRounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" inset="2" id="201125">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="verifyNops:" target="212" id="1143"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="iDelegate" destination="212" id="201220"/>
+                                </connections>
+                            </box>
+                        </subviews>
+                    </customView>
+                    <customView id="1156">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="42"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <subviews>
+                            <progressIndicator verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="bar" id="1158">
+                                <rect key="frame" x="23" y="14" width="378" height="12"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                            <textField verticalHuggingPriority="750" id="1157">
+                                <rect key="frame" x="22" y="30" width="380" height="14"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="201157">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </customView>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="212" id="1169"/>
+            </connections>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="101158" userLabel="Shared User Defaults Controller"/>
+        <view id="1117">
+            <rect key="frame" x="0.0" y="0.0" width="125" height="1"/>
+            <autoresizingMask key="autoresizingMask"/>
+        </view>
+    </objects>
+</document>
