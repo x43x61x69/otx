@@ -47,7 +47,7 @@ Public Domain</string>
 	<key>CFBundleSignature</key>
 	<string>ot++</string>
 	<key>CFBundleVersion</key>
-	<string>562</string>
+	<string>563</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>NSHumanReadableCopyright</key>
@@ -56,9 +56,5 @@ Public Domain</string>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SmartCrashReports_CompanyName</key>
-	<string>anon</string>
-	<key>SmartCrashReports_EmailTicket</key>
-	<string>SCR-0E249AECC8</string>
 </dict>
 </plist>

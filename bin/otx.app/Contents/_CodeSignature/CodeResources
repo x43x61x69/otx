@@ -381,7 +381,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AzMNe/eZOnhkbBLWYedPHkhbpzE=
+			l6NycgUYuFDIS4SkjYlR8BHEpJ0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -397,6 +397,10 @@
 		<key>Resources/Prefs Output Icon.tif</key>
 		<data>
 		vyrQe+fWbeRuDDVOQuBpX8K+8fk=
+		</data>
+		<key>Resources/README.md</key>
+		<data>
+		Ku3PzI3lyBy4p+5SQ+RhvP8tcAE=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -778,7 +782,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AzMNe/eZOnhkbBLWYedPHkhbpzE=
+			l6NycgUYuFDIS4SkjYlR8BHEpJ0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -794,6 +798,10 @@
 		<key>Resources/Prefs Output Icon.tif</key>
 		<data>
 		vyrQe+fWbeRuDDVOQuBpX8K+8fk=
+		</data>
+		<key>Resources/README.md</key>
+		<data>
+		Ku3PzI3lyBy4p+5SQ+RhvP8tcAE=
 		</data>
 	</dict>
 	<key>rules</key>
