@@ -50,6 +50,13 @@ sudo ln -s /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xc
 
 You will have to run this every time Xcode updates.
 
+Issues with Xcode 6 beta and Swift
+----------------------------------
+
+Seems OTX was unable to analyze binaries written with Swfit.
+
+You can use otool instead.
+
 
 License
 -------
