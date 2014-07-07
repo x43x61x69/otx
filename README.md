@@ -7,6 +7,11 @@ The Mach-O disassembler.
 
 ![screenshot](https://dl.dropboxusercontent.com/s/tjixljauua7dx7i/otx.png)
 
+[Bug report and feedback][] | [Donation (PayPal)][] | [Follow Me on Twitter (@x43x61x69)][]
+
+[Bug report and feedback]: https://github.com/x43x61x69/OTX/issues "GitHub"
+[Follow Me on Twitter (@x43x61x69)]: https://twitter.com/x43x61x69 "Twitter"
+[Donation (PayPal)]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N29VTZVBZLZA4
 
 Description
 -----------
@@ -54,9 +59,9 @@ You will have to run this every time Xcode updates.
 Issues with OS X Yosemite, Xcode 6 beta and Swift
 -------------------------------------------------
 
-Xcode 6 beta 1 has issues and won't be able to work with otx, while beta 2 seems working. So far, seems otx can't analyse Swift binaries. You can use otool instead.
+Xcode 6 beta 1 has issues and won't be able to work with otx, while beta 2 seems working. So far, otx can't analyse Swift binaries. You can use otool instead.
 
-If otx crashed when calling otool on your OS X Yosemite with Xcode 5 setup, use the following command: (beta 2)
+If otx crashed when calling otool on your OS X Yosemite with Xcode 6 setup, use the following command: (beta 2)
 
 ```sh
 	sudo ln -s /Applications/Xcode6-beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode6-beta2.app/Contents/Developer/usr/bin/otool
