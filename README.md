@@ -59,12 +59,12 @@ You will have to run this every time Xcode updates.
 Issues with OS X Yosemite, Xcode 6 beta and Swift
 -------------------------------------------------
 
-Xcode 6 beta 1 has issues and won't be able to work with otx, while beta 2 seems working. So far, otx can't analyse Swift binaries. You can use otool instead.
+Xcode 6 beta 1 has issues and won't be able to work with otx, while beta 2 and 3 seems working. So far, otx can't analyse Swift binaries. You can use otool instead.
 
-If otx crashed when calling otool on your OS X Yosemite with Xcode 6 setup, use the following command: (beta 2)
+If otx crashed when calling otool on your OS X Yosemite with Xcode 6 setup, use the following command: (beta 3 for example)
 
 ```sh
-	sudo ln -s /Applications/Xcode6-beta2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode6-beta2.app/Contents/Developer/usr/bin/otool
+	sudo ln -s /Applications/Xcode6-beta3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode6-beta3.app/Contents/Developer/usr/bin/otool
 ```
 
 You will have to run this every time Xcode updates and change the command accordingly.
