@@ -37,22 +37,22 @@
         [NSUserDefaultsController sharedUserDefaultsController];
     NSDictionary*               theValues       =
         [NSDictionary dictionaryWithObjectsAndKeys:
-        @"1",       AskOutputDirKey,
-        @"YES",     DemangleCppNamesKey,
-        @"NO",      EntabOutputKey,
-        @"YES",     OpenOutputFileKey,
-        @"BBEdit",  OutputAppKey,
-        @"txt",     OutputFileExtensionKey,
-        @"output",  OutputFileNameKey,
-        @"NO",      SeparateLogicalBlocksKey,
-        @"NO",      ShowDataSectionKey,
-        @"YES",     ShowIvarTypesKey,
-        @"YES",     ShowLocalOffsetsKey,
-        @"YES",     ShowMD5Key,
-        @"YES",     ShowMethodReturnTypesKey,
-        @"YES",     ShowReturnStatementsKey,
-        @"0",       UseCustomNameKey,
-        @"YES",     VerboseMsgSendsKey,
+        @"1",               AskOutputDirKey,
+        @"YES",             DemangleCppNamesKey,
+        @"NO",              EntabOutputKey,
+        @"NO",              OpenOutputFileKey,
+        @"TextWrangler",    OutputAppKey,
+        @"txt",             OutputFileExtensionKey,
+        @"output",          OutputFileNameKey,
+        @"NO",              SeparateLogicalBlocksKey,
+        @"NO",              ShowDataSectionKey,
+        @"YES",             ShowIvarTypesKey,
+        @"YES",             ShowLocalOffsetsKey,
+        @"YES",             ShowMD5Key,
+        @"YES",             ShowMethodReturnTypesKey,
+        @"YES",             ShowReturnStatementsKey,
+        @"0",               UseCustomNameKey,
+        @"YES",             VerboseMsgSendsKey,
         nil];
 
     [theController setInitialValues: theValues];

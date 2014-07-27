@@ -7,48 +7,47 @@ The Mach-O disassembler.
 
 ![screenshot](https://dl.dropboxusercontent.com/s/tjixljauua7dx7i/otx.png)
 
+[Bug report and feedback][] | [Donation (PayPal)][] | [Follow Me on Twitter (@x43x61x69)][]
+
+[Bug report and feedback]: https://github.com/x43x61x69/OTX/issues "GitHub"
+[Follow Me on Twitter (@x43x61x69)]: https://twitter.com/x43x61x69 "Twitter"
+[Donation (PayPal)]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N29VTZVBZLZA4
 
 Description
 -----------
 
-This is an updated version of the original otx, which has the 
-following new features:
+This is an updated version of the original otx, which has the following new features:
 
 * Works with new otool came with Xcode 4.2 and above.
-* Compatible with Xcode 5.1.
+* Source compatible with Xcode 5 and above.
 * Based on 10.9 SDK.
-* Now use 64bit only binaries.
-* Outdated APIs updated.
+* 64bit binary.
+* All APIs up-to-date.
 * Minor bugs fix.
 * Pre-compiled binaries included.
 
-If the GUI version crashed on certain targets, consider using the 
-CLI version. Usually it works without problems.
+** Please consider buy some of my apps from the [Mac App Store](http://reversi.ng/Metarminator/) if you like my work. Thank you! **
 
 
 Changelog
 ---------
 
+Build 564:
+
+* No more symbolic link.
+* Minor GUI updates to fix issues for Yosemite.
+
 Build 563:
+
 * Minor GUI updates.
 
 Build 562:
+
 * Update base SDK to 10.9 and Xcode 5.1.
 
 Build 561:
+
 * Initial release.
-
-
-Issues with OS X Mavericks & Xcode 5
-------------------------------------
-
-If otx crashed when calling otool on your OS X Mavericks with Xcode 5 setup, use the following command:
-
-```sh
-sudo ln -s /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool /Applications/Xcode.app/Contents/Developer/usr/bin/otool
-```
-
-You will have to run this every time Xcode updates.
 
 
 License

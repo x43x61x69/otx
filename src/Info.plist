@@ -26,8 +26,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>0.16b
-Public Domain</string>
+	<string>0.17 (Public Domain, https://github.com/x43x61x69/OTX)</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Help</string>
 	<key>CFBundleHelpBookName</key>
@@ -43,11 +42,11 @@ Public Domain</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.16b</string>
+	<string>0.17</string>
 	<key>CFBundleSignature</key>
 	<string>ot++</string>
 	<key>CFBundleVersion</key>
-	<string>563</string>
+	<string>564</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>NSHumanReadableCopyright</key>

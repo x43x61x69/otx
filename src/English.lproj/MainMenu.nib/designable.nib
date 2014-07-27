@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="14A298i" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -237,7 +237,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="363" y="372" width="346" height="246"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="746"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
             <value key="minSize" type="size" width="200" height="100"/>
             <value key="maxSize" type="size" width="500" height="500"/>
             <view key="contentView" id="457">
@@ -431,10 +431,8 @@
                             <textField verticalHuggingPriority="750" id="800">
                                 <rect key="frame" x="15" y="21" width="118" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" id="200800">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">Extension:
-</string>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Extension:" id="200800">
+                                    <font key="font" metaFont="label"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -701,7 +699,7 @@
         <window title="otx" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1121" userLabel="Main Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
             <rect key="contentRect" x="155" y="444" width="430" height="180"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="746"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
             <value key="minSize" type="size" width="420" height="166"/>
             <value key="maxSize" type="size" width="800" height="600"/>
             <view key="contentView" id="1122">
@@ -741,10 +739,8 @@ DQ
                             <textField verticalHuggingPriority="750" id="1139">
                                 <rect key="frame" x="8" y="11" width="59" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201139">
+                                <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Output:" id="201139">
                                     <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">Output:
-</string>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -759,10 +755,8 @@ DQ
                                         <textField verticalHuggingPriority="750" id="1126">
                                             <rect key="frame" x="8" y="47" width="42" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201126">
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="File:" id="201126">
                                                 <font key="font" metaFont="smallSystem"/>
-                                                <string key="title">File:
-</string>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -770,10 +764,8 @@ DQ
                                         <textField verticalHuggingPriority="750" id="1129">
                                             <rect key="frame" x="8" y="10" width="42" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" id="201129">
+                                            <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="Type:" id="201129">
                                                 <font key="font" metaFont="smallSystem"/>
-                                                <string key="title">Type:
-</string>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>

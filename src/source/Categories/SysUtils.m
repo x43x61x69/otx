@@ -36,9 +36,12 @@
 
 - (NSString*)pathForTool: (NSString*)toolName
 {
+    // Xcode 5+: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/otool
+    
     NSString* relToolBase = [NSString pathWithComponents:
         [NSArray arrayWithObjects: @"/", @"usr", @"bin", nil]];
     NSString* relToolPath = [relToolBase stringByAppendingPathComponent: toolName];
+    
     NSString* selectToolPath = [relToolBase stringByAppendingPathComponent: @"xcode-select"];
     NSTask* selectTask = [[[NSTask alloc] init] autorelease];
     NSPipe* selectPipe = [NSPipe pipe];
@@ -60,10 +63,18 @@
     NSString* absToolPath = [[[NSString alloc] initWithBytes: [selectData bytes]
                                                       length: [selectData length]
                                                     encoding: NSUTF8StringEncoding] autorelease];
-
-    return [[absToolPath stringByTrimmingCharactersInSet:
-        [NSCharacterSet whitespaceAndNewlineCharacterSet]]
-        stringByAppendingPathComponent: relToolPath];
+    
+    absToolPath = [[[[absToolPath stringByTrimmingCharactersInSet:
+                     [NSCharacterSet whitespaceAndNewlineCharacterSet]]
+                    stringByAppendingPathComponent: @"Toolchains"]
+                   stringByAppendingPathComponent: @"XcodeDefault.xctoolchain"]
+                   stringByAppendingPathComponent: relToolPath];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:absToolPath]) {
+        return relToolPath;
+    }
+    
+    return absToolPath;
 }
 
 @end
