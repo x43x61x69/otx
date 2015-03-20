@@ -5,11 +5,11 @@ The Mach-O disassembler.
 
 ![screenshot](Screenshot.png)
 
-[Bug report and feedback][] | [Donation (PayPal)][] | [Follow Me on Twitter (@x43x61x69)][]
+[Bug report and feedback][] | [Follow Me on Twitter (@x43x61x69)][] | [Blog (Chinese)][]
 
 [Bug report and feedback]: https://github.com/x43x61x69/OTX/issues "GitHub"
 [Follow Me on Twitter (@x43x61x69)]: https://twitter.com/x43x61x69 "Twitter"
-[Donation (PayPal)]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N29VTZVBZLZA4
+[Blog (Chinese)]: http://vox.vg "Blog"
 
 Description
 -----------
