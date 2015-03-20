@@ -24,9 +24,6 @@ This is an updated version of the original otx, which has the following new feat
 * Minor bugs fix.
 * Pre-compiled binaries included.
 
-*** Please consider buy some of my apps from the [Mac App Store](http://reversi.ng/Metarminator/) if you like my work. Thank you! ***
-
-
 Changelog
 ---------
 
