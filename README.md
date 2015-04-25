@@ -1,7 +1,7 @@
 otx
 ===
 
-[![Author](https://img.shields.io/badge/Author-Zhi--Wei_Cai-red.svg?style=flat-square)](http://vox.vg/)  ![Build](https://img.shields.io/badge/Build-565-green.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-Public-blue.svg?style=flat-square)
+[![Author](https://img.shields.io/badge/Author-Zhi--Wei_Cai-red.svg?style=flat-square)](http://vox.vg/)  ![Build](https://img.shields.io/badge/Build-565-green.svg?style=flat-square)  ![SDK](https://img.shields.io/badge/SDK-10.9-yellow.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-Public-blue.svg?style=flat-square)
 
 The Mach-O disassembler.
 
