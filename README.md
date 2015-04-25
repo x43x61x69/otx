@@ -7,15 +7,6 @@ The Mach-O disassembler.
 
 ![screenshot](Screenshot.png)
 
-<<<<<<< HEAD
-=======
-[Bug report and feedback][] | [Follow Me on Twitter (@x43x61x69)][] | [Blog (Chinese)][]
-
-[Bug report and feedback]: https://github.com/x43x61x69/OTX/issues "GitHub"
-[Follow Me on Twitter (@x43x61x69)]: https://twitter.com/x43x61x69 "Twitter"
-[Blog (Chinese)]: http://vox.vg "Blog"
-
->>>>>>> origin/master
 Description
 -----------
 
@@ -25,16 +16,10 @@ Following changes has been made:
 
 * Based on 10.9 SDK.
 * 64bit binary.
-<<<<<<< HEAD
 * Works with new otool came with Xcode 4.2+.
 * Source code compatible with Xcode 5+.
 * Tons of bugs fix.
 
-=======
-* All APIs up-to-date.
-* Minor bugs fix.
-* Pre-compiled binaries included.
->>>>>>> origin/master
 
 Changelog
 ---------
