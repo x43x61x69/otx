@@ -18,7 +18,7 @@ Following changes has been made:
 * 64bit binary.
 * Works with new otool came with Xcode 4.2+.
 * Source code compatible with Xcode 5+.
-* Tons of bugs fix.
+* Tons of bug fixes.
 
 
 Changelog
