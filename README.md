@@ -1,34 +1,32 @@
 otx
 ===
 
+[![Author](https://img.shields.io/badge/Author-Zhi--Wei_Cai-red.svg?style=flat-square)](http://vox.vg/)  ![Build](https://img.shields.io/badge/Build-565-green.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-Public-blue.svg?style=flat-square)
+
 The Mach-O disassembler.
 
 ![screenshot](Screenshot.png)
 
-[Bug report and feedback][] | [Donation (PayPal)][] | [Follow Me on Twitter (@x43x61x69)][]
-
-[Bug report and feedback]: https://github.com/x43x61x69/OTX/issues "GitHub"
-[Follow Me on Twitter (@x43x61x69)]: https://twitter.com/x43x61x69 "Twitter"
-[Donation (PayPal)]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N29VTZVBZLZA4
-
 Description
 -----------
 
-This is an updated version of the original otx, which has the following new features:
+This is an up-to-date version of otx.
 
-* Works with new otool came with Xcode 4.2 and above.
-* Source compatible with Xcode 5 and above.
+Following changes has been made:
+
 * Based on 10.9 SDK.
 * 64bit binary.
-* All APIs up-to-date.
-* Minor bugs fix.
-* Pre-compiled binaries included.
-
-*** Please consider buy some of my apps from the [Mac App Store](http://reversi.ng/Metarminator/) if you like my work. Thank you! ***
+* Works with new otool came with Xcode 4.2+.
+* Source code compatible with Xcode 5+.
+* Tons of bugs fix.
 
 
 Changelog
 ---------
+
+Build 565:
+
+* Fix the Open menu. (#3)
 
 Build 564:
 

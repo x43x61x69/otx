@@ -117,9 +117,9 @@
     if ([thePanel runModal] != NSFileHandlingPanelOKButton)
         return;
 
-    NSString*   theName = [[thePanel URLs] objectAtIndex: 0];
+    NSURL*   theName = [[thePanel URLs] objectAtIndex: 0];
 
-    [self newOFile: [NSURL fileURLWithPath: theName] needsPath: YES];
+    [self newOFile: theName needsPath: YES];
 }
 
 //  newPackageFile:

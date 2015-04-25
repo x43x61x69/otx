@@ -34,7 +34,7 @@
 	<key>CFBundleIconFile</key>
 	<string>App Icon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.anon.otx</string>
+	<string>vg.vox.otx</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -46,7 +46,7 @@
 	<key>CFBundleSignature</key>
 	<string>ot++</string>
 	<key>CFBundleVersion</key>
-	<string>564</string>
+	<string>565</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>NSHumanReadableCopyright</key>
