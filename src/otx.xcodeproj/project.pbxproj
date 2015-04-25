@@ -34,7 +34,6 @@
 		55E1267E14DE58BB003B4A16 /* ObjcTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1267C14DE46F3003B4A16 /* ObjcTypes.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		B72DD5AF1912B1DD00D009C5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B72DD5AE1912B1DD00D009C5 /* README.md */; };
 		B738E51D1912A5E8002AB41B /* ObjcTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E1267C14DE46F3003B4A16 /* ObjcTypes.m */; };
 		E145F6D30B437F5900615A16 /* SmoothViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E145F6D20B437F5900615A16 /* SmoothViewAnimation.m */; };
 		E182007209AE4CD800584B07 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E182007009AE4CD800584B07 /* AppController.m */; };
@@ -120,7 +119,7 @@
 		E13539900A68185500CBDDE5 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = source/AppController.h; sourceTree = "<group>"; };
 		E145F6D10B437F5900615A16 /* SmoothViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmoothViewAnimation.h; path = source/SmoothViewAnimation.h; sourceTree = "<group>"; };
 		E145F6D20B437F5900615A16 /* SmoothViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmoothViewAnimation.m; path = source/SmoothViewAnimation.m; sourceTree = "<group>"; };
-		E182007009AE4CD800584B07 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = source/AppController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		E182007009AE4CD800584B07 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = source/AppController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		E1978C6B0AC603A40096EE62 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
 		E1AD98A40B57311B00E56D96 /* DropBox.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = DropBox.h; path = source/DropBox.h; sourceTree = "<group>"; };
 		E1AD98A50B57311B00E56D96 /* DropBox.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = DropBox.m; path = source/DropBox.m; sourceTree = "<group>"; };
@@ -436,7 +435,6 @@
 				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				25A62F060C38A86C00B08D38 /* App Icon.icns in Resources */,
 				25A62EFF0C38A7C500B08D38 /* Main Window Background.tif in Resources */,
-				B72DD5AF1912B1DD00D009C5 /* README.md in Resources */,
 				25A62EFE0C38A7C500B08D38 /* Prefs General Icon.tif in Resources */,
 				25A62EFD0C38A7C500B08D38 /* Prefs Output Icon.tif in Resources */,
 				E1978C9E0AC603A40096EE62 /* Help in Resources */,

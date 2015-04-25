@@ -403,7 +403,7 @@
         if (iOutputFilePath)
             [iOutputFilePath release];
 
-        iOutputFilePath = [[thePanel URL] absoluteString];
+        iOutputFilePath = [[thePanel URL] path];
     }
     else
     {

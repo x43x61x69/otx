@@ -691,7 +691,7 @@
                 </textField>
             </subviews>
         </customView>
-        <window title="otx" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="1121" userLabel="Main Window">
+        <window title="otx" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="1121" userLabel="Main Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
             <rect key="contentRect" x="155" y="444" width="430" height="180"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1129"/>
@@ -866,6 +866,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="212" id="1169"/>
             </connections>
+            <point key="canvasLocation" x="347" y="348"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="101158" userLabel="Shared User Defaults Controller"/>
         <view id="1117">
