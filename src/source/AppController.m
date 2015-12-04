@@ -397,7 +397,8 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey: AskOutputDirKey])
     {
         NSSavePanel*    thePanel    = [NSSavePanel savePanel];
-
+        thePanel.nameFieldStringValue = iOutputFileName;
+        
         [thePanel setTreatsFilePackagesAsDirectories: YES];
 
         if ([thePanel runModal]  != NSFileHandlingPanelOKButton)
