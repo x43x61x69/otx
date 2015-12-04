@@ -368,12 +368,14 @@
     {
         [iIndeterminateProgBarMainThreadTimer invalidate];
         [iIndeterminateProgBarMainThreadTimer release];
+        iIndeterminateProgBarMainThreadTimer = nil;
     }
 
     iIndeterminateProgBarMainThreadTimer = [NSTimer scheduledTimerWithTimeInterval: interval
         target: self selector: @selector(nudgeIndeterminateProgBar:)
         userInfo: nil repeats: YES];
-
+    [iIndeterminateProgBarMainThreadTimer retain];
+    
     if (!iObjectFile)
     {
         fprintf(stderr, "otx: [AppController attemptToProcessFile]: "
@@ -572,7 +574,9 @@
 - (void)processingThreadDidFinish: (NSString*)result
 {
     iProcessing = NO;
+    
     [iIndeterminateProgBarMainThreadTimer invalidate];
+    [iIndeterminateProgBarMainThreadTimer release];
     iIndeterminateProgBarMainThreadTimer = nil;
 
     if ([result isEqualTo: PROCESS_SUCCESS])
