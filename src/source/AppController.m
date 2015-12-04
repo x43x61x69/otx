@@ -393,6 +393,7 @@
 
     [theTempOutputFilePath retain];
 
+    BOOL outputPathExistingChecked = false;
     if ([[NSUserDefaults standardUserDefaults] boolForKey: AskOutputDirKey])
     {
         NSSavePanel*    thePanel    = [NSSavePanel savePanel];
@@ -406,6 +407,7 @@
             [iOutputFilePath release];
 
         iOutputFilePath = [[thePanel URL] path];
+        outputPathExistingChecked = true; // dialog checks
     }
     else
     {
@@ -418,7 +420,7 @@
     [theTempOutputFilePath release];
 
     // Check if the output file exists.
-    if ([[NSFileManager defaultManager] fileExistsAtPath: iOutputFilePath])
+    if (!outputPathExistingChecked && [[NSFileManager defaultManager] fileExistsAtPath: iOutputFilePath])
     {
         NSString*   fileName    = [iOutputFilePath lastPathComponent];
         NSString*   folderName  =
