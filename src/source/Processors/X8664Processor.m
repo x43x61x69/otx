@@ -2146,7 +2146,7 @@
         {
             isFunction = YES;
 
-            if (thePrevLine->info.isCode == YES)
+            if (thePrevLine && thePrevLine->info.isCode == YES)
             {
                 while (thePrevLine)
                 {   // Search the previous lines in this function...

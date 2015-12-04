@@ -2520,6 +2520,8 @@
          current <= inHaystack + inHaystackLength - 4;
          current++)
     {
+        if (!current) continue;
+        
         if (memcmp(current, searchString, 4) != 0)
             continue;
 
