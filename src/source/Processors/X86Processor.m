@@ -2517,7 +2517,7 @@
 
     // Loop thru haystack
     for (current = inHaystack;
-         current <= inHaystack + inHaystackLength - 4;
+         current && current <= inHaystack + inHaystackLength - 4;
          current++)
     {
         if (memcmp(current, searchString, 4) != 0)
