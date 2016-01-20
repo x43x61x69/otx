@@ -368,12 +368,14 @@
     {
         [iIndeterminateProgBarMainThreadTimer invalidate];
         [iIndeterminateProgBarMainThreadTimer release];
+        iIndeterminateProgBarMainThreadTimer = nil;
     }
 
     iIndeterminateProgBarMainThreadTimer = [NSTimer scheduledTimerWithTimeInterval: interval
         target: self selector: @selector(nudgeIndeterminateProgBar:)
         userInfo: nil repeats: YES];
-
+    [iIndeterminateProgBarMainThreadTimer retain];
+    
     if (!iObjectFile)
     {
         fprintf(stderr, "otx: [AppController attemptToProcessFile]: "
@@ -391,10 +393,12 @@
 
     [theTempOutputFilePath retain];
 
+    BOOL outputPathExistingChecked = false;
     if ([[NSUserDefaults standardUserDefaults] boolForKey: AskOutputDirKey])
     {
         NSSavePanel*    thePanel    = [NSSavePanel savePanel];
-
+        thePanel.nameFieldStringValue = iOutputFileName;
+        
         [thePanel setTreatsFilePackagesAsDirectories: YES];
 
         if ([thePanel runModal]  != NSFileHandlingPanelOKButton)
@@ -404,6 +408,7 @@
             [iOutputFilePath release];
 
         iOutputFilePath = [[thePanel URL] path];
+        outputPathExistingChecked = true; // dialog checks
     }
     else
     {
@@ -416,7 +421,7 @@
     [theTempOutputFilePath release];
 
     // Check if the output file exists.
-    if ([[NSFileManager defaultManager] fileExistsAtPath: iOutputFilePath])
+    if (!outputPathExistingChecked && [[NSFileManager defaultManager] fileExistsAtPath: iOutputFilePath])
     {
         NSString*   fileName    = [iOutputFilePath lastPathComponent];
         NSString*   folderName  =
@@ -572,7 +577,9 @@
 - (void)processingThreadDidFinish: (NSString*)result
 {
     iProcessing = NO;
+    
     [iIndeterminateProgBarMainThreadTimer invalidate];
+    [iIndeterminateProgBarMainThreadTimer release];
     iIndeterminateProgBarMainThreadTimer = nil;
 
     if ([result isEqualTo: PROCESS_SUCCESS])
