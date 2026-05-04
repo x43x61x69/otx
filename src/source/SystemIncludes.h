@@ -20,7 +20,7 @@
 #import <mach-o/loader.h>
 #import <mach-o/nlist.h>
 #import <mach-o/swap.h>
-#import <objc/objc-runtime.h>
+#import <objc/runtime.h>
 #import <sys/param.h>
 #import <sys/ptrace.h>
 #import <sys/syscall.h>

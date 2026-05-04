@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "X8664Processor.h"
-#import "X86Processor.h"
 #import "Arch64Specifics.h"
 #import "List64Utils.h"
 #import "Objc64Accessors.h"
@@ -919,7 +918,7 @@
                 Function64Info searchKey = {absoluteAddy, NULL, 0, 0};
                 Function64Info* funcInfo = bsearch(&searchKey,
                     iFuncInfos, iNumFuncInfos, sizeof(Function64Info),
-                    (COMPARISON_FUNC_TYPE)Function_Info_Compare);
+                    (COMPARISON_FUNC_TYPE)Function64_Info_Compare);
 
                 if (funcInfo && funcInfo->genericFuncNum != 0)
                     snprintf(iLineCommentCString,
@@ -1425,7 +1424,7 @@
         {
             switch (sendType)
             {
-                case send:
+                case MsgSend:
                 case send_fpret:
                 case send_variadic:
                     snprintf(ioComment, MAX_COMMENT_LENGTH, "-%s[%%rdi %s]", returnTypeString, selString);
@@ -2429,7 +2428,7 @@
                         Line64      searchKey = {NULL, 0, NULL, NULL, NULL, {jumpTarget, {0}, YES, NO}};
                         Line64*     searchKeyPtr = &searchKey;
                         Line64**    beginLine = bsearch(&searchKeyPtr, iLineArray, iNumCodeLines, sizeof(Line64*),
-                            (COMPARISON_FUNC_TYPE)Line_Address_Compare);
+                            (COMPARISON_FUNC_TYPE)Line64_Address_Compare);
 
                         if (beginLine != NULL)
                         {
@@ -2572,7 +2571,7 @@
     iCurrentFuncInfoIndex   = -1;
 }
 
-/*#pragma mark -
+#pragma mark -
 #pragma mark Deobfuscator protocol
 //  verifyNops:numFound:
 // ----------------------------------------------------------------------------
@@ -2589,7 +2588,7 @@
     [self loadLCommands];
 
     *outList    = [self searchForNopsIn: (unsigned char*)iTextSect.contents
-                               ofLength: iTextSect.size
+                               ofLength: (uint32_t)iTextSect.size
                                numFound: outFound];
 
     return (*outFound != 0);
@@ -2789,8 +2788,9 @@
 
     // Copy original app's permissions to new file.
     NSFileManager*  fileMan     = [NSFileManager defaultManager];
-    NSDictionary*   fileAttrs   = [fileMan fileAttributesAtPath:
-        [iOFile path] traverseLink: NO];
+    NSError*        attrError   = nil;
+    NSDictionary*   fileAttrs   = [fileMan attributesOfItemAtPath:
+        [iOFile path] error: &attrError];
 
     if (!fileAttrs)
     {
@@ -2800,10 +2800,10 @@
     }
 
     NSDictionary*   permsDict   = [NSDictionary dictionaryWithObjectsAndKeys:
-        [NSNumber numberWithUnsignedInt: [fileAttrs filePosixPermissions]],
+        [NSNumber numberWithUnsignedLong: [fileAttrs filePosixPermissions]],
         NSFilePosixPermissions, nil];
 
-    if (![fileMan changeFileAttributes: permsDict atPath: [newURL path]])
+    if (![fileMan setAttributes: permsDict ofItemAtPath: [newURL path] error: &attrError])
     {
         fprintf(stderr, "otx: -[X86Processor fixNops]: "
             "unable to change file permissions for fixed executable.\n");
@@ -2811,6 +2811,6 @@
 
     // Return fixed file.
     return newURL;
-}*/
+}
 
 @end

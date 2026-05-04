@@ -10,6 +10,7 @@
 #import "SystemIncludes.h"
 
 #import "AppController.h"
+#import "MachOSwap.h"
 #import "ListUtils.h"
 #import "PPCProcessor.h"
 #import "PPC64Processor.h"

@@ -85,8 +85,7 @@ TextFieldWidths;
 
 // Constants for dealing with objc_msgSend variants.
 enum {
-    send,
-    send_rtp,           // ppc only
+    MsgSend,
     sendSuper,
     send_stret,
     sendSuper_stret,
@@ -173,6 +172,10 @@ enum {
     NSPipe*             iCPFiltInputPipe;
     NSPipe*             iCPFiltOutputPipe;
 
+    // Swift demangling via libswiftDemangle (loaded at runtime with dlopen)
+    void*               iSwiftDemangLib;
+    size_t            (*iSwiftDemangFn)(const char*, char*, size_t);
+
     uint32_t            iMatchedSelectorCount;
     uint32_t            iMissedSelectorCount;
 
@@ -203,7 +206,7 @@ enum {
                   toFile: (FILE*)outFile;
 - (UInt8)sendTypeFromMsgSend: (char*)inString;
 
-- (NSString*)generateMD5String;
+- (NSString*)generateChecksumString;
 - (void)decodeMethodReturnType: (const char*)inTypeCode
                         output: (char*)outCString;
 
@@ -258,7 +261,7 @@ objc2_32_ivar_t_Compare(
 // ----------------------------------------------------------------------------
 // Utils
 
-// This could be a macro if I could figure out the syntaxÉ
+// This could be a macro if I could figure out the syntaxï¿½
 static int
 strcmp_sectname(const char *data, const char *str)
 {

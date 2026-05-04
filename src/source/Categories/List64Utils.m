@@ -8,8 +8,10 @@
 */
 
 #import <Cocoa/Cocoa.h>
+#import <time.h>
 
 #import "List64Utils.h"
+#import "SharedDefs.h"
 
 @implementation Exe64Processor(List64Utils)
 
@@ -111,14 +113,32 @@
         return NO;
     }
 
+    // Write file header.
+    {
+        time_t    now = time(NULL);
+        struct tm utc;
+        char      dateBuf[32];
+
+        gmtime_r(&now, &utc);
+        strftime(dateBuf, sizeof(dateBuf), "%Y-%m-%d %H:%M:%S UTC", &utc);
+
+        const char* targetPath = iOFile ? UTF8STRING([iOFile path]) : "(unknown)";
+
+        fprintf(outFile,
+            "; otx " OTX_VERSION "\n"
+            "; Generated: %s\n"
+            "; Target:    %s\n"
+            ";\n",
+            dateBuf, targetPath);
+    }
+
     Line64* theLine = listHead;
 
-    // Cache the fileno and use SYS_write for maximum speed.
     SInt32  fileNum = fileno(outFile);
 
     while (theLine)
     {
-        if (syscall(SYS_write, fileNum, theLine->chars, theLine->length) == -1)
+        if (write(fileNum, theLine->chars, theLine->length) == -1)
         {
             perror("otx: unable to write to output file");
 

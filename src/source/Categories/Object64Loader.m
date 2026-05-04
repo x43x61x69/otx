@@ -10,6 +10,7 @@
 
 #import "Object64Loader.h"
 #import "Objc64Accessors.h"
+#import "MachOSwap.h"
 
 @implementation Exe64Processor(Object64Loader)
 
@@ -31,18 +32,19 @@
         uint32_t      i;
 
         // fat_header and fat_arch are always big-endian. Swap if necessary.
-#if TARGET_RT_LITTLE_ENDIAN
-        swap_fat_header(&fh, OSLittleEndian);
-#endif
+        fh.magic     = OSSwapBigToHostInt32(fh.magic);
+        fh.nfat_arch = OSSwapBigToHostInt32(fh.nfat_arch);
 
         // Find the mach header we want.
         for (i = 0; i < fh.nfat_arch && !iMachHeaderPtr; i++)
         {
             fa  = *faPtr;
 
-#if TARGET_RT_LITTLE_ENDIAN
-            swap_fat_arch(&fa, 1, OSLittleEndian);
-#endif
+            fa.cputype    = OSSwapBigToHostInt32(fa.cputype);
+            fa.cpusubtype = OSSwapBigToHostInt32(fa.cpusubtype);
+            fa.offset     = OSSwapBigToHostInt32(fa.offset);
+            fa.size       = OSSwapBigToHostInt32(fa.size);
+            fa.align      = OSSwapBigToHostInt32(fa.align);
 
             if (fa.cputype == iArchSelector)
             {
@@ -670,7 +672,7 @@
 
     dyld_data_section*  data    = (dyld_data_section*)iDyldSect.contents;
 
-    iAddrDyldStubBindingHelper  = (uint32_t)(data->dyld_stub_binding_helper);
+    iAddrDyldStubBindingHelper  = (uint32_t)(uintptr_t)(data->dyld_stub_binding_helper);
 
     if (iSwapped)
         iAddrDyldStubBindingHelper  = OSSwapInt32(iAddrDyldStubBindingHelper);

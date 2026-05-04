@@ -25,9 +25,14 @@
     [otoolTask setStandardInput: [NSPipe pipe]];
     [otoolTask setStandardOutput: silence];
     [otoolTask setStandardError: silence];
-    [otoolTask launch];
-    [otoolTask waitUntilExit];
 
+    NSError* launchError = nil;
+    [otoolTask launchAndReturnError: &launchError];
+
+    if (launchError)
+        return NO;
+
+    [otoolTask waitUntilExit];
     return ([otoolTask terminationStatus] == 1);
 }
 
@@ -51,7 +56,12 @@
     [selectTask setArguments: args];
     [selectTask setStandardInput: [NSPipe pipe]];
     [selectTask setStandardOutput: selectPipe];
-    [selectTask launch];
+
+    NSError* selectError = nil;
+    [selectTask launchAndReturnError: &selectError];
+    if (selectError)
+        return relToolPath;
+
     [selectTask waitUntilExit];
 
     int selectStatus = [selectTask terminationStatus];

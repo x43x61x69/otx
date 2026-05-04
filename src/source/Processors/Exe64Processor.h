@@ -251,7 +251,7 @@ Function64Info;
 - (char*)selectorForMsgSend: (char*)outComment
                    fromLine: (Line64*)inLine;
 
-- (void)insertMD5;
+- (void)insertChecksum;
 
 #ifdef OTX_DEBUG
 - (void)printSymbol: (nlist_64)inSym;
@@ -297,6 +297,17 @@ Method64Info_Compare_Swapped(
         return -1;
 
     return (imp1 > imp2);
+}
+
+static int
+Line64_Address_Compare(
+    Line64**  l1,
+    Line64**  l2)
+{
+    if ((*l1)->info.address < (*l2)->info.address)
+        return -1;
+
+    return ((*l1)->info.address > (*l2)->info.address);
 }
 
 static int

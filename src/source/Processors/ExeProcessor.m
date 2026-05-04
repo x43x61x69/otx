@@ -8,12 +8,9 @@
 */
 
 #import <Cocoa/Cocoa.h>
+#import <dlfcn.h>
 
 #import "ExeProcessor.h"
-#import "ArchSpecifics.h"
-#import "ListUtils.h"
-#import "ObjcAccessors.h"
-#import "ObjectLoader.h"
 #import "SysUtils.h"
 #import "UserDefaultKeys.h"
 
@@ -76,7 +73,7 @@
         return nil;
     }
 
-    [theData getBytes: iRAMFile];
+    [theData getBytes: iRAMFile length: [theData length]];
 
     iFileArchMagic  = *(uint32_t*)iRAMFile;
     iExeIsFat   = (iFileArchMagic == FAT_MAGIC || iFileArchMagic == FAT_CIGAM);
@@ -95,6 +92,36 @@
         [iCPFiltTask setStandardInput: iCPFiltInputPipe];
         [iCPFiltTask setStandardOutput: iCPFiltOutputPipe];
         [iCPFiltTask launch];
+
+        // Setup the Swift name demangler via libswiftDemangle (runtime dlopen).
+        // Derive the path from xcode-select's developer directory.
+        NSString* devDir = nil;
+        NSTask* xcsTask = [[NSTask alloc] init];
+        NSPipe* xcsPipe = [[NSPipe alloc] init];
+        [xcsTask setLaunchPath: @"/usr/bin/xcode-select"];
+        [xcsTask setArguments: @[@"-p"]];
+        [xcsTask setStandardOutput: xcsPipe];
+        @try {
+            [xcsTask launch];
+            [xcsTask waitUntilExit];
+            NSData* d = [[xcsPipe fileHandleForReading] readDataToEndOfFile];
+            devDir = [[NSString alloc] initWithData: d encoding: NSUTF8StringEncoding];
+            devDir = [devDir stringByTrimmingCharactersInSet:
+                      [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        }
+        @catch (NSException* e) { }
+        [xcsTask release];
+        [xcsPipe release];
+
+        if (devDir.length > 0)
+        {
+            NSString* libPath = [devDir
+                stringByAppendingPathComponent:
+                @"Toolchains/XcodeDefault.xctoolchain/usr/lib/libswiftDemangle.dylib"];
+            iSwiftDemangLib = dlopen(libPath.fileSystemRepresentation, RTLD_LAZY | RTLD_LOCAL);
+        }
+        if (iSwiftDemangLib)
+            iSwiftDemangFn = dlsym(iSwiftDemangLib, "swift_demangle_getDemangledName");
     }
 
     return self;
@@ -135,6 +162,13 @@
         [iCPFiltTask release];
     }
 
+    if (iSwiftDemangLib)
+    {
+        dlclose(iSwiftDemangLib);
+        iSwiftDemangLib = NULL;
+        iSwiftDemangFn  = NULL;
+    }
+
     [super dealloc];
 }
 
@@ -144,7 +178,7 @@
 
 - (UInt8)sendTypeFromMsgSend: (char*)inString
 {
-    UInt8 sendType = send;
+    UInt8 sendType = MsgSend;
 
     if (strlen(inString) != 13) // not _objc_msgSend
     {
@@ -154,8 +188,6 @@
             sendType = sendSuper;
         else if (strstr(inString, "_stret"))
             sendType = send_stret;
-        else if (strstr(inString, "_rtp"))
-            sendType = send_rtp;
         else if (strstr(inString, "_fpret"))
             sendType = send_fpret;
         else
@@ -184,7 +216,7 @@
     char vs. BOOL
 
     data type       encoding
-    ÑÑÑÑÑÑÑÑÑ       ÑÑÑÑÑÑÑÑ
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     char            c
     BOOL            c
     char[100]       [100c]
@@ -329,7 +361,7 @@
 
             break;
 
-        case '[':   // arrayÉ   [12^f] <-> float*[12]
+        case '[':   // arrayï¿½   [12^f] <-> float*[12]
         {
             char    theArrayCCount[10]  = {0};
 
@@ -373,90 +405,96 @@
                   toFile: (FILE*)outFile
 {}
 
-- (NSString*)generateMD5String
+- (NSString*)generateChecksumString
 {
-    NSString* md5Path = [NSString pathWithComponents: [NSArray arrayWithObjects:
-        @"/", @"sbin", @"md5", nil]];
-    NSTask* md5Task = [[[NSTask alloc] init] autorelease];
-    NSPipe* md5Pipe = [NSPipe pipe];
-    NSPipe* errorPipe = [NSPipe pipe];
-    NSArray* args = [NSArray arrayWithObjects: @"-q", [iOFile path], nil];
+    NSString* toolPath;
+    NSArray*  args;
+    NSString* label;
 
-    [md5Task setLaunchPath: md5Path];
-    [md5Task setArguments: args];
-    [md5Task setStandardInput: [NSPipe pipe]];
-    [md5Task setStandardOutput: md5Pipe];
-    [md5Task setStandardError: errorPipe];
+    switch (iOpts.checksumAlgorithm) {
+        case CHECKSUM_MD5:
+            toolPath = @"/sbin/md5";
+            args     = [NSArray arrayWithObjects: @"-q", [iOFile path], nil];
+            label    = @"md5";
+            break;
+        case CHECKSUM_SHA1:
+            toolPath = @"/usr/bin/shasum";
+            args     = [NSArray arrayWithObjects: @"-a", @"1", [iOFile path], nil];
+            label    = @"sha1";
+            break;
+        case CHECKSUM_SHA256:
+            toolPath = @"/usr/bin/shasum";
+            args     = [NSArray arrayWithObjects: @"-a", @"256", [iOFile path], nil];
+            label    = @"sha256";
+            break;
+        default:
+            return nil;
+    }
+
+    NSTask* task      = [[[NSTask alloc] init] autorelease];
+    NSPipe* outPipe   = [NSPipe pipe];
+    NSPipe* errorPipe = [NSPipe pipe];
+
+    [task setLaunchPath: toolPath];
+    [task setArguments: args];
+    [task setStandardInput: [NSPipe pipe]];
+    [task setStandardOutput: outPipe];
+    [task setStandardError: errorPipe];
 
     @try
     {
-        [md5Task launch];
+        [task launch];
     }
     @catch (NSException* e)
     {
-        NSLog(@"otx: unable to launch md5: %@", [e reason]);
+        NSLog(@"otx: unable to launch %@: %@", toolPath, [e reason]);
         return nil;
     }
 
-    [md5Task waitUntilExit];
+    [task waitUntilExit];
 
-    int md5Status = [md5Task terminationStatus];
-
-    if (md5Status != 0) // md5Task failed, log and bail
+    if ([task terminationStatus] != 0)
     {
         NSData* errorData = nil;
+        @try { errorData = [[errorPipe fileHandleForReading] availableData]; }
+        @catch (NSException* e) { }
 
-        @try
-        {
-            errorData = [[errorPipe fileHandleForReading] availableData];
-        }
-        @catch (NSException* e)
-        {
-            NSLog(@"otx: unable to read data from md5 error for \"%@\": %@", [iOFile path], [e reason]);
-            return nil;
-        }
+        NSString* errorString = (errorData && [errorData length]) ?
+            [[[NSString alloc] initWithBytes: [errorData bytes]
+                                      length: [errorData length]
+                                    encoding: NSUTF8StringEncoding] autorelease] :
+            @"unknown error";
 
-        if (errorData == nil)
-        {
-            NSLog(@"otx: md5 error data is nil for \"%@\"", [iOFile path]);
-            return nil;
-        }
-
-        NSString* errorString = [[[NSString alloc] initWithBytes: [errorData bytes]
-                                                          length: [errorData length]
-                                                        encoding: NSUTF8StringEncoding] autorelease];
-
-        if (errorString == nil || [errorString length] == 0)
-            errorString = @"unknown error";
-
-        NSLog(@"otx: unable to generate md5 checksum for \"%@\": %@", [iOFile path], errorString);
+        NSLog(@"otx: unable to generate %@ checksum for \"%@\": %@",
+              label, [iOFile path], errorString);
         return nil;
     }
 
-    NSData* md5Data = nil;
-
-    @try
-    {
-        md5Data = [[md5Pipe fileHandleForReading] availableData];
-    }
+    NSData* outData = nil;
+    @try { outData = [[outPipe fileHandleForReading] availableData]; }
     @catch (NSException* e)
     {
-        NSLog(@"otx: unable to read from md5 data for \"%@\": %@", [iOFile path], [e reason]);
+        NSLog(@"otx: unable to read %@ output for \"%@\": %@",
+              label, [iOFile path], [e reason]);
         return nil;
     }
 
-    if (md5Data == nil || [md5Data length] == 0) // md5Task produced no data, log and bail
+    if (!outData || [outData length] == 0)
     {
-        NSLog(@"otx: unexpected failure while generating md5 checksum of \"%@\"", [iOFile path]);
+        NSLog(@"otx: unexpected empty output from %@ for \"%@\"", label, [iOFile path]);
         return nil;
     }
 
-    NSString* stringFromData = [[[NSString alloc] initWithBytes: [md5Data bytes]
-                                                         length: [md5Data length]
-                                                       encoding: NSUTF8StringEncoding] autorelease];
+    NSString* raw = [[[NSString alloc] initWithBytes: [outData bytes]
+                                              length: [outData length]
+                                            encoding: NSUTF8StringEncoding] autorelease];
+    raw = [raw stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    return [NSString stringWithFormat: @"\nmd5: %@\n", [stringFromData stringByTrimmingCharactersInSet:
-        [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    // shasum outputs "<hash>  <filename>" â€” extract only the hash token.
+    NSString* hash = [[raw componentsSeparatedByCharactersInSet:
+                       [NSCharacterSet whitespaceCharacterSet]] firstObject];
+
+    return [NSString stringWithFormat: @"\n%@: %@\n", label, hash];
 }
 
 #pragma mark -

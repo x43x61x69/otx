@@ -19,7 +19,7 @@
 - (char*)findSymbolByAddress: (uint64_t)inAddress
 {
     if (!iFuncSyms)
-        return NO;
+        return NULL;
 
     nlist_64 searchKey = {{0}, 0, 0, 0, inAddress};
     nlist_64* symbol = bsearch(&searchKey,

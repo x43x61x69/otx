@@ -1,56 +1,75 @@
-otx
-===
+# otx
 
-[![Author](https://img.shields.io/badge/Author-Zhi--Wei_Cai-red.svg?style=flat-square)](http://vox.vg/)  ![Build](https://img.shields.io/badge/Build-566-green.svg?style=flat-square)  ![SDK](https://img.shields.io/badge/SDK-10.9-yellow.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-Public-blue.svg?style=flat-square)
-
-The Mach-O disassembler.
+A Mach-O disassembler for macOS, supporting x86_64 and arm64 binaries. Available as both a GUI app and a command-line tool.
 
 ![screenshot](Screenshot.png)
 
-Description
------------
+## Features
 
-This is an up-to-date version of otx.
+- Disassembles `__TEXT` sections of x86_64 and arm64 Mach-O binaries
+- Resolves Objective-C class names and selectors in `objc_msgSend` call comments
+- Demangles C++ symbols via `c++filt`
+- Demangles Swift symbols via `libswiftDemangle` (requires Xcode)
+- Annotates literal pool references, CFStrings, and data section pointers
+- Displays local offsets, raw machine code, and field-aligned output
+- Separates logical code blocks at branch targets
+- Appends data section contents (`__DATA`, `__DATA_CONST`, etc.)
+- Computes SHA-256 (or MD5 / SHA-1) checksum of the target binary
+- Verifies and repairs obfuscated NOP sequences (x86_64)
+- Output header with tool version, UTC generation timestamp, and target path
+- Universal binary support via `-arch`
 
-Following changes has been made:
+## Requirements
 
-* Based on 10.9 SDK.
-* 64bit binary.
-* Works with new otool came with Xcode 4.2+.
-* Source code compatible with Xcode 5+.
-* Tons of bug fixes.
+- macOS 12 or later
+- Xcode (provides `otool` and `libswiftDemangle`)
 
+## Building
 
-Changelog
----------
+Open `src/otx.xcodeproj` in Xcode and build the **otx gui** or **otx cli** scheme.
 
-Build 566:
+## CLI Usage
 
-* Fix the Save menu. (#4)
+```
+otx [-bcdCelmnoprvR] [-arch <arch>] <binary>
+```
 
-Build 565:
+| Flag | Default | Description |
+|------|---------|-------------|
+| `-b` | off | Separate logical blocks with blank lines |
+| `-c` | on  | Toggle SHA-256 checksum (off = no checksum) |
+| `-C` | on  | Toggle display of raw machine code bytes |
+| `-d` | off | Append data sections to output |
+| `-e` | off | Disable entabbed (tab-aligned) output |
+| `-l` | on  | Toggle local offsets |
+| `-m` | on  | Toggle verbose `objc_msgSend` annotations |
+| `-n` | on  | Toggle C++ / Swift symbol demangling |
+| `-o` | —   | Check binary for obfuscated NOPs only (x86_64) |
+| `-p` | off | Print progress to stderr |
+| `-r` | on  | Toggle Obj-C method return types |
+| `-R` | on  | Toggle return statements |
+| `-v` | on  | Toggle Obj-C member variable types |
+| `-arch x86_64 \| arm64` | host | Select a slice from a universal binary |
 
-* Fix the Open menu. (#3)
+## Changelog
 
-Build 564:
+### 2.0.0
 
-* No more symbolic link.
-* Minor UI fix.
+- **Dropped 32-bit and PPC support** — only x86_64 and arm64 are supported
+- **Swift symbol demangling** — mangled `_$s…` names are demangled in function labels, operands, and comments via `libswiftDemangle` (loaded at runtime from the active Xcode toolchain)
+- **Output file header** — every generated file now begins with the otx version, UTC generation timestamp, and the path of the analysed binary
+- **Fixed bsearch comparison functions** — x86_64 code was using 32-bit comparison stubs; now uses the correct 64-bit variants
+- **`<Deobfuscator>` protocol conformance** declared on `X8664Processor`
+- **x86 decoding macros** consolidated into `X8664Processor.h`
 
-Build 563:
+### 1.x (Build 566 and earlier)
 
-* Minor UI updates.
+- Fix the Save menu (#4)
+- Fix the Open menu (#3)
+- No more symbolic link; minor UI fixes
+- Updated base SDK to 10.9 / Xcode 5.1
+- Initial release
 
-Build 562:
-
-* Update base SDK to 10.9 and Xcode 5.1.
-
-Build 561:
-
-* Initial release.
-
-
-License
--------
+## License
 
 The otx project and all original otx source files are in the public domain.

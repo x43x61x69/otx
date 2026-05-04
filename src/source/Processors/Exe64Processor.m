@@ -362,8 +362,8 @@
     }
 
     // Optionally insert md5.
-    if (iOpts.checksum)
-        [self insertMD5];
+    if (iOpts.checksumAlgorithm)
+        [self insertChecksum];
 
     return YES;
 }
@@ -607,7 +607,28 @@
     // If we got here, we have a symbol name.
     if (iOpts.demangleCppNames)
     {
-        if (strstr(ioLine->chars, "__Z") == ioLine->chars)
+        // Detect Swift mangled symbols (_$s prefix) and demangle via libswiftDemangle.
+        if (iSwiftDemangFn && strstr(ioLine->chars, "_$s") == ioLine->chars)
+        {
+            char demangledName[MAX_LINE_LENGTH];
+
+            // Strip the trailing ":\n" before demangling.
+            if (ioLine->chars[ioLine->length - 2] == ':')
+                ioLine->chars[ioLine->length - 2] = 0;
+            else
+                ioLine->chars[ioLine->length - 1] = 0;
+
+            size_t demangledLen = iSwiftDemangFn(ioLine->chars, demangledName, sizeof(demangledName));
+            if (demangledLen > 0)
+            {
+                demangledName[demangledLen] = 0;
+                free(ioLine->chars);
+                ioLine->length = demangledLen + 2; // ":\n"
+                ioLine->chars  = malloc(ioLine->length + 1);
+                snprintf(ioLine->chars, ioLine->length + 1, "%s:\n", demangledName);
+            }
+        }
+        else if (strstr(ioLine->chars, "__Z") == ioLine->chars)
         {
             char demangledName[MAX_LINE_LENGTH];
 
@@ -640,8 +661,6 @@
             @catch (NSException* e) {
                 NSLog(@"otx: [Exe64Processor processLine:] failed to read from c++filt: %@", [e reason]);
             }
-
-            [readData getBytes: demangledName];
 
             if (readData != nil)
             {
@@ -730,17 +749,20 @@
         {
             size_t  origCommentLength   = theOrigLength - consumedAfterOp - 1;
 
+            if (origCommentLength >= MAX_COMMENT_LENGTH)
+                origCommentLength = MAX_COMMENT_LENGTH - 1;
+
             strncpy(theOrigCommentCString, (*ioLine)->chars + consumedAfterOp + 1,
                 origCommentLength);
 
-            // Add the null terminator.
+            // Add the null terminator (overwrites trailing newline in normal case).
             theOrigCommentCString[origCommentLength - 1]    = 0;
         }
     }
 
     char theCodeCString[32] = {0};
     UInt8* inBuffer = (*ioLine)->info.code;
-    UInt8 i;
+    SInt32 i;
 
     char codeFormatString[61] = "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x";
 
@@ -759,10 +781,12 @@
         inBuffer[12], inBuffer[13], inBuffer[14]);
 
     i = iFieldWidths.instruction - (*ioLine)->info.codeLength * 2;
-    mnemSpaces[i - 1] = 0;
+    if (i >= 1 && i <= MAX_FIELD_SPACING) mnemSpaces[i - 1] = 0;
+    else mnemSpaces[0] = 0;
 
-    i = iFieldWidths.mnemonic - strlen(theMnemonicCString);
-    opSpaces[i - 1] = 0;
+    i = (SInt32)iFieldWidths.mnemonic - (SInt32)strlen(theMnemonicCString);
+    if (i >= 1 && i <= MAX_FIELD_SPACING) opSpaces[i - 1] = 0;
+    else opSpaces[0] = 0;
 
     // Terminate commentSpaces based on operands field width.
     if (iLineOperandsCString[0] && theOrigCommentCString[0])
@@ -771,8 +795,9 @@
 
         if (opLength < iFieldWidths.operands)
         {
-            i = iFieldWidths.operands - opLength;
-            commentSpaces[i - 1] = 0;
+            i = (SInt32)iFieldWidths.operands - (SInt32)opLength;
+            if (i >= 1 && i <= MAX_FIELD_SPACING) commentSpaces[i - 1] = 0;
+            else commentSpaces[0] = 0;
         }
         else
             commentSpaces[0] = 0;
@@ -968,7 +993,7 @@
             uint32_t  i, j = 0;
 
             // Escape newlines, carriage returns and tabs.
-            for (i = 0; i < origCommentLength; i++)
+            for (i = 0; i < (SInt32)origCommentLength && j < MAX_COMMENT_LENGTH - 2; i++)
             {
                 if (iLineCommentCString[i] == '\n')
                 {
@@ -995,7 +1020,7 @@
             if (iLineOperandsCString[0])
                 snprintf(theCommentCString, MAX_COMMENT_LENGTH, "%s", tempComment);
             else
-                snprintf(iLineOperandsCString, MAX_COMMENT_LENGTH, "%s", tempComment);
+                snprintf(iLineOperandsCString, MAX_OPERANDS_LENGTH, "%s", tempComment);
 
             // Terminate commentSpaces based on operands field width.
             size_t opLength = strlen(iLineOperandsCString);
@@ -1022,7 +1047,21 @@
     // Demangle operands if necessary.
     if (iLineOperandsCString[0] && iOpts.demangleCppNames)
     {
-        if (strstr(iLineOperandsCString, "__Z") == iLineOperandsCString)
+        // Swift mangled symbol in operands (_$s prefix).
+        if (iSwiftDemangFn && strstr(iLineOperandsCString, "_$s") == iLineOperandsCString)
+        {
+            char demangledName[MAX_OPERANDS_LENGTH];
+            size_t demangledLen = iSwiftDemangFn(iLineOperandsCString, demangledName,
+                                                  sizeof(demangledName));
+            if (demangledLen > 0)
+            {
+                demangledName[demangledLen] = 0;
+                strncpy(iLineOperandsCString, demangledName,
+                        MIN(demangledLen + 1, MAX_OPERANDS_LENGTH));
+                iLineOperandsCString[MAX_OPERANDS_LENGTH - 1] = 0;
+            }
+        }
+        else if (strstr(iLineOperandsCString, "__Z") == iLineOperandsCString)
         {
             char demangledName[MAX_OPERANDS_LENGTH];
 
@@ -1077,7 +1116,35 @@
     // Demangle comment if necessary.
     if (theCommentCString[0] && iOpts.demangleCppNames)
     {
-        if (strstr(theCommentCString, "__Z") == theCommentCString)
+        char* swiftMangledInComment = strstr(theCommentCString, "_$s");
+        if (iSwiftDemangFn && swiftMangledInComment)
+        {
+            // Demangle either the whole comment (if it starts with _$s) or
+            // just the embedded mangled name (e.g. "literal pool symbol address: _$sSSN").
+            char demangledName[MAX_COMMENT_LENGTH];
+            size_t demangledLen = iSwiftDemangFn(swiftMangledInComment, demangledName,
+                                                  sizeof(demangledName));
+            if (demangledLen > 0)
+            {
+                demangledName[demangledLen] = 0;
+                if (swiftMangledInComment == theCommentCString)
+                {
+                    // Replace the whole comment.
+                    strncpy(theCommentCString, demangledName,
+                            MIN(demangledLen + 1, MAX_COMMENT_LENGTH));
+                    theCommentCString[MAX_COMMENT_LENGTH - 1] = 0;
+                }
+                else
+                {
+                    // Replace from the mangled name onwards (keep the prefix).
+                    size_t prefixLen = (size_t)(swiftMangledInComment - theCommentCString);
+                    size_t available = MAX_COMMENT_LENGTH - prefixLen - 1;
+                    strncpy(swiftMangledInComment, demangledName, MIN(demangledLen + 1, available));
+                    theCommentCString[MAX_COMMENT_LENGTH - 1] = 0;
+                }
+            }
+        }
+        else if (strstr(theCommentCString, "__Z") == theCommentCString)
         {
             char    demangledName[MAX_COMMENT_LENGTH];
 
@@ -1150,12 +1217,14 @@
 
         // Terminate addrSpaces based on offset field width.
         i   = iFieldWidths.offset - 6;
-        addrSpaces[i - 1] = 0;
+        if (i >= 1 && i <= MAX_FIELD_SPACING) addrSpaces[i - 1] = 0;
+        else addrSpaces[0] = 0;
     }
 
     // Terminate instSpaces based on address field width.
     i   = iFieldWidths.address - 16;
-    instSpaces[i - 1] = 0;
+    if (i >= 1 && i <= MAX_FIELD_SPACING) instSpaces[i - 1] = 0;
+    else instSpaces[0] = 0;
 
     // Insert a generic function name if needed.
     if (needFuncName)
@@ -1470,12 +1539,12 @@
 }
 
 #pragma mark -
-//  insertMD5
+//  insertChecksum
 // ----------------------------------------------------------------------------
 
-- (void)insertMD5
+- (void)insertChecksum
 {
-    NSString* md5String = [self generateMD5String];
+    NSString* md5String = [self generateChecksumString];
 
     Line64* newLine = calloc(1, sizeof(Line64));
     const char* utf8String = [md5String UTF8String];
